@@ -1,13 +1,14 @@
 package lt.ezz.pointinfo;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class App {
+
+	public static void main(String[] args) {
+		Logger log = LoggerFactory.getLogger(App.class);
+		log.info("Starting");
+	}
 }
