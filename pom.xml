@@ -5,7 +5,7 @@
 	<groupId>lt.ezz</groupId>
 	<artifactId>pointinfo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>pointinfo</name>
 	<url>http://maven.apache.org</url>
@@ -13,19 +13,49 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<springframework.version>4.2.0.RELEASE</springframework.version>
+		<springframework.version>4.2.4.RELEASE</springframework.version>
 		<jackson.version>2.5.3</jackson.version>
 		<slf4jVersion>1.7.13</slf4jVersion>
 	</properties>
 
 	<build>
+		<finalName>PointInfo</finalName>
 		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
 
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<server>mytomcatserver</server>
+					<path>/pointinfo</path>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -36,7 +66,6 @@
 			<artifactId>spring-tx</artifactId>
 			<version>${springframework.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -61,8 +90,6 @@
 			<artifactId>slf4j-simple</artifactId>
 			<version>${slf4jVersion}</version>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>junit</groupId>
