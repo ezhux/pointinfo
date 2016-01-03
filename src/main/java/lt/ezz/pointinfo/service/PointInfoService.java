@@ -1,7 +1,7 @@
 package lt.ezz.pointinfo.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -10,19 +10,18 @@ import lt.ezz.pointinfo.domain.Point;
 @Service
 public class PointInfoService {
 
-	List<Point> pointList = new ArrayList<Point>();
-	
+	Map<Integer, Point> pointMap = new HashMap<Integer, Point>();
 	
 	public void addPoint(Point point) {
-		pointList.add(point);
+		pointMap.put(pointMap.size()+1, point);
 	}
 	
-	public void removePoint(Point point) {
-		pointList.remove(0);
+	public void removePoint(Integer pointId) {
+		pointMap.remove(pointId);
 	}
 	
-	public List<Point> getAllPoints() {
-		return pointList;
+	public Map<Integer, Point> getAllPoints() {
+		return pointMap;
 	}
 	
 }
