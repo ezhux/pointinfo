@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import lt.ezz.pointinfo.domain.Point;
 import lt.ezz.pointinfo.service.PointInfoService;
 
+import javax.validation.Valid;
+
 @RequestMapping(value = "/")
 @RestController
 public class PointInfoController {
@@ -33,7 +35,7 @@ public class PointInfoController {
 	}
 	
 	@RequestMapping(value = "/point/add", method = RequestMethod.PUT)
-	public ResponseEntity<Void> addPoint(@RequestBody Point point) {
+	public ResponseEntity<Void> addPoint(@Valid @RequestBody Point point) {
 
 		log.info("Adding new point to the list: " + point.toString());
 		
@@ -49,12 +51,16 @@ public class PointInfoController {
 	}
 	
 	@RequestMapping(value = "/point/delete/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Map<Integer, Point>> deletePoint(@PathVariable("id") int id) {
+	public ResponseEntity<?> deletePoint(@PathVariable("id") int id) {
 		
 		log.info("Removing point from the list: " + id);
-		
-		pointInfoService.removePoint(id);
-		return new ResponseEntity<Map<Integer, Point>>(HttpStatus.NO_CONTENT);
+		try {
+			pointInfoService.removePoint(id);
+			return new ResponseEntity<Map<Integer, Point>>(HttpStatus.NO_CONTENT);
+		} catch (Exception ex) {
+			log.error("No such point in DB");
+			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@RequestMapping(value = "/point/getpath", method = RequestMethod.GET)

@@ -16,7 +16,10 @@ public class PointInfoService {
 		pointMap.put(pointMap.size()+1, point);
 	}
 	
-	public void removePoint(Integer pointId) {
+	public void removePoint(Integer pointId) throws Exception {
+		if (pointMap.get(pointId) == null) {
+			throw new Exception("no point with this id"); 
+		}
 		pointMap.remove(pointId);
 	}
 	

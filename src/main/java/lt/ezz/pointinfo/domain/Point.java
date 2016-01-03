@@ -1,9 +1,16 @@
 package lt.ezz.pointinfo.domain;
 
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Point {
 
-	int coordinateX;
-	int coordinateY;
+	@NotNull
+	Integer coordinateX;
+	@NotNull
+	Integer coordinateY;
 	String name;
 	String color;
 	
