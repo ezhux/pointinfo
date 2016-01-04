@@ -1,5 +1,8 @@
 add multiple points
+delete multiple points
+
+optional:
+
 use H2 DB or some other
 after PUT (add point), location header should point to the newly created record
 
-privalomos koordinates
