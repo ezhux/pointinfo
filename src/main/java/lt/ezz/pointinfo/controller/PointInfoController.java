@@ -65,7 +65,10 @@ public class PointInfoController {
 	
 	@RequestMapping(value = "/point/getpath", method = RequestMethod.GET)
 	public ResponseEntity<List<Point>> getShortestPath() {
-		return null;
+		
+		log.info("Calculating shortest path");
+		List<Point> shortestPath = pointInfoService.findShortestPath();
+		return new ResponseEntity<List<Point>>(shortestPath, HttpStatus.OK);
 	}
 	
 }

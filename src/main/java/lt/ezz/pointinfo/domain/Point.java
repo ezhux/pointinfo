@@ -45,12 +45,15 @@ public class Point {
 		this.coordinateY = coordinateY;
 	}
 
-	
+	public Point() {
+		super();
+	}
+
 	@Override
 	public String toString() {
-		return "Point [coordinateX=" + coordinateX + ", coordinateY=" + coordinateY + "]";
+		return "Point [coordinateX=" + coordinateX + ", coordinateY=" + coordinateY + ", name=" + name + ", color="
+				+ color + "]";
 	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
