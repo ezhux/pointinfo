@@ -44,10 +44,11 @@ public class Point {
 		this.coordinateX = coordinateX;
 		this.coordinateY = coordinateY;
 	}
+
+	
 	@Override
 	public String toString() {
-		return "Point [coordinateX=" + coordinateX + ", coordinateY=" + coordinateY + ", name=" + name + ", color="
-				+ color + "]";
+		return "Point [coordinateX=" + coordinateX + ", coordinateY=" + coordinateY + "]";
 	}
 	
 	@Override
