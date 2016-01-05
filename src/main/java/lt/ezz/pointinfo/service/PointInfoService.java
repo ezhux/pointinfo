@@ -18,8 +18,10 @@ public class PointInfoService {
 	
 	Map<Integer, Point> pointMap = new HashMap<Integer, Point>();
 	
-	public void addPoint(Point point) {
-		pointMap.put(pointMap.size()+1, point);
+	public void addPoint(List<Point> points) {
+		for (int i = 0; i < points.size(); i++) {
+			pointMap.put(pointMap.size()+1, points.get(i));
+		}
 	}
 	
 	public void removePoint(Integer pointId) throws Exception {

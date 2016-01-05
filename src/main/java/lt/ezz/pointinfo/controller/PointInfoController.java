@@ -35,11 +35,11 @@ public class PointInfoController {
 	}
 	
 	@RequestMapping(value = "/point/add", method = RequestMethod.PUT)
-	public ResponseEntity<Void> addPoint(@Valid @RequestBody Point point) {
+	public ResponseEntity<Void> addPoint(@Valid @RequestBody List<Point> points) {
 
-		log.info("Adding new point to the list: " + point.toString());
+		log.info("Adding points to the list: " + points.toString());
 		
-		pointInfoService.addPoint(point);
+		pointInfoService.addPoint(points);
 		HttpHeaders headers = new HttpHeaders();
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
